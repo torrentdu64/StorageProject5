@@ -20,6 +20,9 @@ namespace StorageProject5.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Rental> Rentals { get; set; }
+        public DbSet<Furniture> Furnitures { get; set; }
+        public DbSet<Part>  Parts { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

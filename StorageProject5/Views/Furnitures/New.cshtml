@@ -1,0 +1,19 @@
+﻿@model StorageProject5.Models.Furniture
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Deposit your Stuff</h2>
+
+<h2>New Depot</h2>
+
+@using (Html.BeginForm("Create", "Furnitures"))
+{
+    <div class="form-group">
+    
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-danger">Submit</button>
+}

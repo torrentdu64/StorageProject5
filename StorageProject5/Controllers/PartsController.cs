@@ -38,6 +38,11 @@ namespace StorageProject5.Controllers
             var partName = Request.Params["Part.Name[]"];
             var productNameList = partName.Split(',').ToList();
 
+            var locationAddress = Request.Params["Location.Address[]"];
+
+            // need to change comas too dangerous to use for a Address !!!!!
+            var locationAddressList = locationAddress.Split(',').ToList();
+
             //var ObjFourniture = new Furniture(fourniture);
 
 
@@ -50,13 +55,23 @@ namespace StorageProject5.Controllers
                 partList.Add(part);
             }
 
+            List<Location> locationList = new List<Location>();
+            foreach (var item in locationAddressList)
+            {
+                var location = new Location();
+                location.Address = item;
+                //location.FurnitureId = fun.Id;
+                locationList.Add(location);
+            }
+
 
 
             try
             {
-                
-               _context.Parts.AddRange(partList);
+                _context.locations.AddRange(locationList);
 
+                _context.Parts.AddRange(partList);
+               
                 //for (int i = 0; i < partList.Count; i++)
                 //{
                 //     //_context.Parts.Add(partList[i]);
@@ -88,7 +103,7 @@ namespace StorageProject5.Controllers
         {
 
 
-            var part = _context.Parts.SingleOrDefault(m => m.Id == id);
+            var part = _context.Parts.Include(m => m.Location).SingleOrDefault(m => m.Id == id);
             if (part == null)
                 return HttpNotFound();
 
@@ -100,6 +115,7 @@ namespace StorageProject5.Controllers
         {
             var dbPart = _context.Parts.Single(m => m.Id == part.Id);
             dbPart.Name = part.Name;
+            dbPart.Location = part.Location;
             _context.SaveChanges();
             TempData["message"] = "Update Successfully";
             return RedirectToAction("AdminListFurniture", "Furnitures");

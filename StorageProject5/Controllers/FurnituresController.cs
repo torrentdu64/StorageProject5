@@ -32,9 +32,9 @@ namespace StorageProject5.Controllers
         {
             var furnitures = _context.Furnitures.ToList();
 
-           var res =_context.Parts.ToList();
+          
 
-
+            var partsLocations = _context.Parts.Include(m => m.Location).ToList();
 
 
 
@@ -43,8 +43,7 @@ namespace StorageProject5.Controllers
             var viewModel = new FourniturePartViewModel
             {
                 Furnitures = furnitures,
-                Parts = res
-
+                Parts = partsLocations,
             };
 
             return View(viewModel);
@@ -79,12 +78,13 @@ namespace StorageProject5.Controllers
             var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == id);
 
             var parts = _context.Parts.Where( m => m.FurnitureId == id).ToList();
-
+            var locations = _context.Parts.Include(m => m.Location ).ToList();
             var viewModel = new FourniturePartViewModel
             {
                 Furniture = furniture,
                 Part = new Part(),
-                Parts = parts
+                Parts = parts,
+                Locations = locations
             };
 
             return View(viewModel);

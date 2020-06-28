@@ -215,6 +215,10 @@
     <Compile Include="Migrations\202006280328172_AddAnnotationToPartModel.Designer.cs">
       <DependentUpon>202006280328172_AddAnnotationToPartModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006282006474_AddLocationTable.cs" />
+    <Compile Include="Migrations\202006282006474_AddLocationTable.Designer.cs">
+      <DependentUpon>202006282006474_AddLocationTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Furniture.cs" />
@@ -336,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006280328172_AddAnnotationToPartModel.resx">
       <DependentUpon>202006280328172_AddAnnotationToPartModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006282006474_AddLocationTable.resx">
+      <DependentUpon>202006282006474_AddLocationTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

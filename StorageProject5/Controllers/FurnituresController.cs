@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StorageProject5.ViewModels;
+using System.Data.Entity;
 
 namespace StorageProject5.Controllers
 {
@@ -30,7 +31,23 @@ namespace StorageProject5.Controllers
         public ActionResult AdminListFurniture()
         {
             var furnitures = _context.Furnitures.ToList();
-            return View(furnitures);
+
+           var res =_context.Parts.ToList();
+
+
+
+
+
+
+
+            var viewModel = new FourniturePartViewModel
+            {
+                Furnitures = furnitures,
+                Parts = res
+
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult Show(int id)

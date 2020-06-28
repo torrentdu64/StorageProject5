@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StorageProject5.Models.Furniture>
+﻿@model StorageProject5.ViewModels.FourniturePartViewModel
 @{
     ViewBag.Title = "AdminListFurniture";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,9 +7,23 @@
 <h2>AdminListFurniture</h2>
 
 
-@foreach (var f in Model)
+
+@foreach (var item in Model.Furnitures)
 {
-<h1>
-    @Html.ActionLink(f.Name, "AdminFurnitureParts", "Furnitures", new { id = f.Id }, null)
-</h1>
+    <h1>
+        @Html.ActionLink(item.Name, "AdminFurnitureParts", "Furnitures", new { id = item.Id }, null)
+
+       
+    </h1>
+    <ul>
+        @foreach (var item2 in Model.Parts)
+        {
+            if (item2.FurnitureId == item.Id)
+            {
+                <li>@item2.Name</li>
+            }
+
+        }
+
+    </ul>
 }

@@ -46,13 +46,16 @@ namespace StorageProject5.Controllers
             {
                 var part = new Part();
                 part.Name = item;
+                part.FurnitureId = fun.Id;
                 partList.Add(part);
             }
 
+
+
             try
             {
-
-                _context.Parts.AddRange(partList);
+                
+               _context.Parts.AddRange(partList);
 
                 //for (int i = 0; i < partList.Count; i++)
                 //{
@@ -65,6 +68,8 @@ namespace StorageProject5.Controllers
                 //_context.Furnitures.Add(fourniture);
                 //_context.Furnitures.Add(fourniture);
                 _context.SaveChanges();
+
+                
 
                 return RedirectToAction("AdminListFurniture", "Furnitures");
             }

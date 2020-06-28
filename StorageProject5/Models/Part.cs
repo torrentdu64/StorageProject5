@@ -14,5 +14,7 @@ namespace StorageProject5.Models
         [ForeignKey("Fourniture")]
         public int FurnitureId { get; set; }
         public Furniture Fourniture { get; set; }
+        public Location Location { get; set; }
+        public int LocationId { get; set; }
     }
 }

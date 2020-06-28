@@ -1,4 +1,4 @@
-﻿@model StorageProject5.Models.Furniture
+﻿@model StorageProject5.ViewModels.FourniturePartViewModel
 @{
     ViewBag.Title = "AdminFurnitureParts";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +8,7 @@
 
 <h2>Administration Storage</h2>
 
-<h1> @Model.Name</h1>  
+<h1> @Model.Furniture.Name</h1>
 
 
 <p class="btn btn-success" onclick="addNewPart()">add a new part</p>
@@ -16,18 +16,15 @@
 
 @using (Html.BeginForm("Create", "Parts"))
 {
-    <div id="form_place">
-        @*<div class="form-group">
-                @Html.LabelFor(m => m.Product.Name)
-                @Html.TextBoxFor(m => m.Product.Name, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Location.Address)
-                @Html.TextBoxFor(m => m.Location.Address, new { @class = "form-control" })
-            </div>*@
+    @Html.HiddenFor(m => m.Furniture.Id)
+<div id="form_place">
+    @*<div class="form-group">
+            @Html.LabelFor(m => m.Part.Name)
+            @Html.TextBoxFor(m => m.Part.Name, new { @class = "form-control" })
+        </div>*@
 
-    </div>
-    <button type="submit" class="btn btn-danger">Submit</button>
+</div>
+<button type="submit" class="btn btn-danger">Submit</button>
 }
 
 
@@ -36,7 +33,8 @@
     function addNewPart() {
 
 
-        var test = "<div class='form-group'><label for='Product_Name'>Name</label><input class='form-control' id='Product_Name' name='Product.Name[]' type='text' value=''></div><div class='form-group'><label for='Location_Address'>Address</label><input class='form-control' id='Location_Address' name='Location.Address[]' type='text' value=''></div>";
+        var test = "<div class='form-group'><label for='Part_Name'>Name</label><input class='form-control' id='Part_Name' name='Part.Name[]' type='text' value=''></div><div class='form-group'><label for='Location_Address'>Address</label><input class='form-control' id='Location_Address' name='Location.Address[]' type='text' value=''></div>";
+
 
 
         var newPlace = document.querySelector("#form_place");

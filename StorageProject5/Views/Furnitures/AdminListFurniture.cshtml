@@ -1,0 +1,15 @@
+﻿@model IEnumerable<StorageProject5.Models.Furniture>
+@{
+    ViewBag.Title = "AdminListFurniture";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AdminListFurniture</h2>
+
+
+@foreach (var f in Model)
+{
+<h1>
+    @Html.ActionLink(f.Name, "AdminFurnitureParts", "Furnitures", new { id = f.Id }, null)
+</h1>
+}

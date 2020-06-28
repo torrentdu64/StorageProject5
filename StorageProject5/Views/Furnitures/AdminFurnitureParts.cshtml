@@ -1,0 +1,45 @@
+﻿@model StorageProject5.Models.Furniture
+@{
+    ViewBag.Title = "AdminFurnitureParts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AdminFurnitureParts</h2>
+
+<h2>Administration Storage</h2>
+
+<h1> @Model.Name</h1>  
+
+
+<p class="btn btn-success" onclick="addNewPart()">add a new part</p>
+
+
+@using (Html.BeginForm("Create", "Parts"))
+{
+    <div id="form_place">
+        @*<div class="form-group">
+                @Html.LabelFor(m => m.Product.Name)
+                @Html.TextBoxFor(m => m.Product.Name, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Location.Address)
+                @Html.TextBoxFor(m => m.Location.Address, new { @class = "form-control" })
+            </div>*@
+
+    </div>
+    <button type="submit" class="btn btn-danger">Submit</button>
+}
+
+
+
+<script>
+    function addNewPart() {
+
+
+        var test = "<div class='form-group'><label for='Product_Name'>Name</label><input class='form-control' id='Product_Name' name='Product.Name[]' type='text' value=''></div><div class='form-group'><label for='Location_Address'>Address</label><input class='form-control' id='Location_Address' name='Location.Address[]' type='text' value=''></div>";
+
+
+        var newPlace = document.querySelector("#form_place");
+        newPlace.insertAdjacentHTML('beforeend', test);
+    }
+</script>

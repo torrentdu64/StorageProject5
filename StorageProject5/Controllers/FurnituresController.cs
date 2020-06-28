@@ -25,10 +25,16 @@ namespace StorageProject5.Controllers
             return View();
         }
 
+        public ActionResult AdminListFurniture()
+        {
+            var furnitures = _context.Furnitures.ToList();
+            return View(furnitures);
+        }
+
         public ActionResult Show(int id)
         {
             var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == id);
-            return View("Show");
+            return View(furniture);
         }
 
         //[AllowAnonymous]
@@ -47,6 +53,13 @@ namespace StorageProject5.Controllers
             _context.SaveChanges();
             TempData["message"] = "Deposit Successfully record";
             return RedirectToAction("Show", "Furnitures" , new { id = furniture.Id } );
+        }
+
+        public ActionResult AdminFurnitureParts(int id)
+        {
+            var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == id);
+
+            return View(furniture);
         }
     }
 }

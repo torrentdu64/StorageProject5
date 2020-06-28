@@ -6,24 +6,42 @@
 
 <h2>AdminListFurniture</h2>
 
-
-
-@foreach (var item in Model.Furnitures)
-{
-    <h1>
-        @Html.ActionLink(item.Name, "AdminFurnitureParts", "Furnitures", new { id = item.Id }, null)
-
-       
-    </h1>
-    <ul>
-        @foreach (var item2 in Model.Parts)
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+            <th scope="col">Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Furnitures)
         {
-            if (item2.FurnitureId == item.Id)
-            {
-                <li>@item2.Name</li>
-            }
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>
+                    <h1> @Html.ActionLink(item.Name, "AdminFurnitureParts", "Furnitures", new { id = item.Id }, null)</h1>
+                    <ul>
+                        @foreach (var item2 in Model.Parts)
+                        {
+                            if (item2.FurnitureId == item.Id)
+                            {
+                                <li>@item2.Name</li>
+                            }
 
+                        }
+
+                    </ul>
+                </td>
+                <td> <h1> @Html.ActionLink("Edit", "Edit", "Furnitures", new { id = item.Id }, new { @class = "btn btn-success" } )</h1></td>
+                <td><h2 class="btn btn-danger" >Deletd</h2></td>
+            </tr>
+
+            
+            
         }
 
-    </ul>
-}
+    </tbody>
+</table>
+

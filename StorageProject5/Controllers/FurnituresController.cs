@@ -78,13 +78,37 @@ namespace StorageProject5.Controllers
         {
             var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == id);
 
+            var parts = _context.Parts.Where( m => m.FurnitureId == id).ToList();
+
             var viewModel = new FourniturePartViewModel
             {
                 Furniture = furniture,
-                Part = new Part()
+                Part = new Part(),
+                Parts = parts
             };
 
             return View(viewModel);
+        }
+
+        public ActionResult Edit(int id)
+        {
+
+
+            var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == id);
+            if (furniture == null)
+                return HttpNotFound();
+
+            return View(furniture);
+        }
+
+        [HttpPost]
+        public ActionResult Update(Furniture furniture)
+        {
+            var dbFurniture = _context.Furnitures.Single( m => m.Id == furniture.Id);
+            dbFurniture.Name = furniture.Name;
+            _context.SaveChanges();
+            TempData["message"] = "Update Successfully";
+            return RedirectToAction("AdminListFurniture", "Furnitures");
         }
     }
 }

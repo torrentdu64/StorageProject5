@@ -1,0 +1,20 @@
+﻿@model StorageProject5.Models.Furniture
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Update", "Furnitures"))
+{
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-danger">Save</button>
+}

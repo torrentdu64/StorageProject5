@@ -286,10 +286,11 @@
     <Content Include="Views\Furnitures\Show.cshtml" />
     <Content Include="Views\Furnitures\AdminListFurniture.cshtml" />
     <Content Include="Views\Furnitures\AdminFurnitureParts.cshtml" />
+    <Content Include="Views\Furnitures\Edit.cshtml" />
+    <Content Include="Views\Parts\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Parts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -83,5 +83,26 @@ namespace StorageProject5.Controllers
             //_context.SaveChanges();
            
         }
+
+        public ActionResult Edit(int id)
+        {
+
+
+            var part = _context.Parts.SingleOrDefault(m => m.Id == id);
+            if (part == null)
+                return HttpNotFound();
+
+            return View(part);
+        }
+
+        [HttpPost]
+        public ActionResult Update(Part part)
+        {
+            var dbPart = _context.Parts.Single(m => m.Id == part.Id);
+            dbPart.Name = part.Name;
+            _context.SaveChanges();
+            TempData["message"] = "Update Successfully";
+            return RedirectToAction("AdminListFurniture", "Furnitures");
+        }
     }
 }

@@ -10,6 +10,32 @@
 
 <h1> @Model.Furniture.Name</h1>
 
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Part Name</th>
+            <th scope="col">Edit </th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Parts)
+        {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.Name</td>
+           
+            <td>@Html.ActionLink("Modify", "Edit", "Parts", new { id = item.Id }, new { @class = "btn btn-success" })</td>
+            <td><h1 class="btn btn-danger">Delete</h1></td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
 
 <p class="btn btn-success" onclick="addNewPart()">add a new part</p>
 
@@ -17,14 +43,14 @@
 @using (Html.BeginForm("Create", "Parts"))
 {
     @Html.HiddenFor(m => m.Furniture.Id)
-<div id="form_place">
-    @*<div class="form-group">
-            @Html.LabelFor(m => m.Part.Name)
-            @Html.TextBoxFor(m => m.Part.Name, new { @class = "form-control" })
-        </div>*@
+    <div id="form_place">
+        @*<div class="form-group">
+                @Html.LabelFor(m => m.Part.Name)
+                @Html.TextBoxFor(m => m.Part.Name, new { @class = "form-control" })
+            </div>*@
 
-</div>
-<button type="submit" class="btn btn-danger">Submit</button>
+    </div>
+    <button type="submit" class="btn btn-danger">Submit</button>
 }
 
 

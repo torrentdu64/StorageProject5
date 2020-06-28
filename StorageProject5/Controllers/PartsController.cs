@@ -50,8 +50,12 @@ namespace StorageProject5.Controllers
                 for (int i = 0; i < partList.Count; i++)
                 {
                     var part = _context.Parts.Add(partList[i]);
+                    _context.Furnitures.Add(fourniture);
+                   
                                      
                 }
+                //_context.Furnitures.Add(fourniture);
+
                 _context.SaveChanges();
 
                 return RedirectToAction("AdminListFurniture", "Furnitures");

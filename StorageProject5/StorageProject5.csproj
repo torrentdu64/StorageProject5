@@ -199,6 +199,10 @@
     <Compile Include="Migrations\202006272327000_OptionalPartIdInFurniture.Designer.cs">
       <DependentUpon>202006272327000_OptionalPartIdInFurniture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006280203245_DeletedTheInFournitureModel.cs" />
+    <Compile Include="Migrations\202006280203245_DeletedTheInFournitureModel.Designer.cs">
+      <DependentUpon>202006280203245_DeletedTheInFournitureModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Furniture.cs" />
@@ -306,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006272327000_OptionalPartIdInFurniture.resx">
       <DependentUpon>202006272327000_OptionalPartIdInFurniture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006280203245_DeletedTheInFournitureModel.resx">
+      <DependentUpon>202006280203245_DeletedTheInFournitureModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

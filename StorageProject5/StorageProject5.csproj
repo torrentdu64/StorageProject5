@@ -203,6 +203,18 @@
     <Compile Include="Migrations\202006280203245_DeletedTheInFournitureModel.Designer.cs">
       <DependentUpon>202006280203245_DeletedTheInFournitureModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006280233301_DeleteTheFieldPartToFourniture.cs" />
+    <Compile Include="Migrations\202006280233301_DeleteTheFieldPartToFourniture.Designer.cs">
+      <DependentUpon>202006280233301_DeleteTheFieldPartToFourniture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006280238262_AddfurnitureIdToPart.cs" />
+    <Compile Include="Migrations\202006280238262_AddfurnitureIdToPart.Designer.cs">
+      <DependentUpon>202006280238262_AddfurnitureIdToPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006280328172_AddAnnotationToPartModel.cs" />
+    <Compile Include="Migrations\202006280328172_AddAnnotationToPartModel.Designer.cs">
+      <DependentUpon>202006280328172_AddAnnotationToPartModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Furniture.cs" />
@@ -313,6 +325,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006280203245_DeletedTheInFournitureModel.resx">
       <DependentUpon>202006280203245_DeletedTheInFournitureModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006280233301_DeleteTheFieldPartToFourniture.resx">
+      <DependentUpon>202006280233301_DeleteTheFieldPartToFourniture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006280238262_AddfurnitureIdToPart.resx">
+      <DependentUpon>202006280238262_AddfurnitureIdToPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006280328172_AddAnnotationToPartModel.resx">
+      <DependentUpon>202006280328172_AddAnnotationToPartModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

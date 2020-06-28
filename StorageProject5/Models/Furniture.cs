@@ -9,8 +9,6 @@ namespace StorageProject5.Models
     {
         public int Id { get; set; }
         public string  Name { get; set; }
-        public int PartId { get; set; }
-
-        public Part Part { get; set; }
+       
     }
 }

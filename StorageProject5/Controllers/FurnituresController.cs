@@ -51,7 +51,7 @@ namespace StorageProject5.Controllers
         {
             
             _context.Furnitures.Add(furniture);
-            _context.Parts.Add(new Part { Name = "Need to be administrate" });
+            //_context.Parts.Add(new Part { Name = "Need to be administrate" });
             _context.SaveChanges();
             TempData["message"] = "Deposit Successfully record";
             return RedirectToAction("Show", "Furnitures" , new { id = furniture.Id } );

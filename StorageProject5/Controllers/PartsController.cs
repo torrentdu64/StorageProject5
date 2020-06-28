@@ -1,10 +1,12 @@
-﻿using StorageProject5.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StorageProject5.ViewModels;
+using System.Data.Entity;
+using StorageProject5.Models;
 
 namespace StorageProject5.Controllers
 {
@@ -27,14 +29,18 @@ namespace StorageProject5.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(FourniturePartViewModel four)
+        public ActionResult Create(FourniturePartViewModel fourniture)
         {
 
 
-            var fourniture = _context.Furnitures.SingleOrDefault(m => m.Id == four.Furniture.Id);
+            var fun =_context.Furnitures.SingleOrDefault(m => m.Id == fourniture.Furniture.Id);
+            _context.SaveChanges();
             var partName = Request.Params["Part.Name[]"];
             var productNameList = partName.Split(',').ToList();
-            
+
+            //var ObjFourniture = new Furniture(fourniture);
+
+
             List<Part> partList = new List<Part>();
             foreach (var item in productNameList)
             {
@@ -46,16 +52,18 @@ namespace StorageProject5.Controllers
             try
             {
 
-                
-                for (int i = 0; i < partList.Count; i++)
-                {
-                    var part = _context.Parts.Add(partList[i]);
-                    _context.Furnitures.Add(fourniture);
-                   
-                                     
-                }
-                //_context.Furnitures.Add(fourniture);
+                _context.Parts.AddRange(partList);
 
+                //for (int i = 0; i < partList.Count; i++)
+                //{
+                //     //_context.Parts.Add(partList[i]);
+
+                   
+                  
+                                     
+                //}
+                //_context.Furnitures.Add(fourniture);
+                //_context.Furnitures.Add(fourniture);
                 _context.SaveChanges();
 
                 return RedirectToAction("AdminListFurniture", "Furnitures");

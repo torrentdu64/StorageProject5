@@ -1,0 +1,22 @@
+﻿@model StorageProject5.ViewModels.RentalFurnitureViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rente a furniture</h2>
+
+<h3>You have choose @Model.Furniture.Name</h3>
+
+<p>Please reserve a furniture through this form</p>
+@using (Html.BeginForm("Create", "Rentals"))
+{
+    <div class="form-group">
+        @Html.LabelFor( m => m.Rental.Name)
+        @Html.TextBoxFor( m => m.Rental.Name , new { @class = "form-control"})
+
+       
+        @Html.HiddenFor( h => h.Furniture.Id)
+    </div>
+    <button type="submit" class="btn btn-danger">Submit</button>
+}

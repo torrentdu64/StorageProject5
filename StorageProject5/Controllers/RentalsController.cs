@@ -103,12 +103,35 @@ namespace StorageProject5.Controllers
             //_context.Rentals.Add(rental);
 
             //_context.Rentals.AddRange()
+            List<Rental> rentals = new List<Rental>();
+            for (int i = 0; i < multipleRentalPropose.Furnitures.Count; i++)
+            {
+                Rental rental = new Rental() {Name = multipleRentalPropose.Rental.Name,  FurnitureId = multipleRentalPropose.Furnitures[i].Id };
+                var tempId = multipleRentalPropose.Furnitures[i].Id;
+                var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == tempId);
+                furniture.IsRented = multipleRentalPropose.Furnitures[i].IsRented;
+                _context.Furnitures.Add(furniture);
+                rentals.Add(rental);
+            }
 
-            _context.SaveChanges();
+            try
+            {
+                //_context.Furnitures.AddRange(multipleRentalPropose.Furnitures);
 
-            TempData["message"] = "Your Rental Successfully record";
+                _context.Rentals.AddRange(rentals);
+                _context.SaveChanges();
+                 TempData["message"] = "Your Rental Successfully record";
 
-            return RedirectToAction("Index", "Rentals");
+                 return RedirectToAction("Index", "Rentals");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
+
+           
            
         }
 

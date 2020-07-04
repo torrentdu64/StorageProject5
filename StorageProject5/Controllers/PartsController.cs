@@ -34,9 +34,9 @@ namespace StorageProject5.Controllers
 
 
             var fun =_context.Furnitures.SingleOrDefault(m => m.Id == fourniture.Furniture.Id);
-            _context.SaveChanges();
+            //_context.SaveChanges();
             var partName = Request.Params["Part.Name[]"];
-            var productNameList = partName.Split(',').ToList();
+            var partNameList = partName.Split(',').ToList();
 
             var locationAddress = Request.Params["Location.Address[]"];
 
@@ -46,45 +46,71 @@ namespace StorageProject5.Controllers
             //var ObjFourniture = new Furniture(fourniture);
 
 
-            List<Part> partList = new List<Part>();
-            foreach (var item in productNameList)
-            {
-                var part = new Part();
-                part.Name = item;
-                part.FurnitureId = fun.Id;
-                partList.Add(part);
-            }
-
             List<Location> locationList = new List<Location>();
             foreach (var item in locationAddressList)
             {
                 var location = new Location();
                 location.Address = item;
                 //location.FurnitureId = fun.Id;
+
                 locationList.Add(location);
+                
             }
+
+            _context.locations.AddRange(locationList);
+            _context.SaveChanges();
+
+
+            List<Part> partList = new List<Part>();
+            //foreach (var item in partNameList)
+            //{
+            //    var part = new Part();
+            //    part.Name = item;
+            //    part.LocationId = locationList[],
+            //    part.FurnitureId = fun.Id;
+            //    partList.Add(part);
+                
+            //}
+            for (int i = 0; i < locationList.Count; i++)
+            {
+                var part = new Part();
+                part.Name = partNameList[i];
+                part.LocationId = locationList[i].Id;
+                part.FurnitureId = fun.Id;
+                partList.Add(part);
+            }
+
 
 
 
             try
             {
-                _context.locations.AddRange(locationList);
+
+
+               // _context.locations.AddRange(locationList);
+               
 
                 _context.Parts.AddRange(partList);
-               
+
+
+                _context.SaveChanges();
+
+
+
+
                 //for (int i = 0; i < partList.Count; i++)
                 //{
                 //     //_context.Parts.Add(partList[i]);
 
-                   
-                  
-                                     
+
+
+
                 //}
                 //_context.Furnitures.Add(fourniture);
                 //_context.Furnitures.Add(fourniture);
-                _context.SaveChanges();
 
-                
+
+
 
                 return RedirectToAction("AdminListFurniture", "Furnitures");
             }

@@ -9,5 +9,6 @@ namespace StorageProject5.Models
     {
         public int Id { get; set; }
         public string Address { get; set; }
+        public List<Part> parts { get; set; }
     }
 }

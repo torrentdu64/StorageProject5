@@ -10,7 +10,7 @@ namespace StorageProject5.ViewModels
     {
         public  Furniture Furniture { get; set; }
         public Part Part { get; set; }
-
+        public Location Location { get; set; }
         public List<Furniture> Furnitures { get; set; }
         public List<Part> Parts { get; set; }
         public List<Part> Locations { get; set; }

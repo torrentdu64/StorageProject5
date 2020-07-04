@@ -79,10 +79,12 @@ namespace StorageProject5.Controllers
 
             var parts = _context.Parts.Where( m => m.FurnitureId == id).ToList();
             var locations = _context.Parts.Include(m => m.Location ).ToList();
+            var location = new Location();
             var viewModel = new FourniturePartViewModel
             {
                 Furniture = furniture,
                 Part = new Part(),
+                Location = location,
                 Parts = parts,
                 Locations = locations
             };

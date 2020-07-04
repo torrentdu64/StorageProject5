@@ -16,8 +16,10 @@ namespace StorageProject5.ViewModels
 
         public List<Furniture> availableFurnitures { get; set; }
 
-        
-
         public List<Furniture> OrdersThisWeek { get; set; } = new List<Furniture>();
+
+        public Customer Customer { get; set; }
+
+        public List<Customer> customers { get; set; }
     }
 }

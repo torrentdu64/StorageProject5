@@ -25,6 +25,8 @@ namespace StorageProject5.Controllers
             var currentRentals = _context.Rentals.Select(x => x.FurnitureId).ToList();
             var availableFurnitures = _context.Furnitures.Where(x => !currentRentals.Contains(x.Id) ).ToList();
 
+           
+
             RentalFurnitureViewModel viewModel = new RentalFurnitureViewModel()
             {
                 availableFurnitures = availableFurnitures
@@ -35,20 +37,44 @@ namespace StorageProject5.Controllers
 
         public ActionResult AdminIndex()
         {
-            var furnitures = _context.Furnitures.ToList();
-            var currentRentals = _context.Rentals.Select(x => x.FurnitureId).ToList();
-            var rentals = _context.Rentals.ToList();
+
+            var customers = _context.customers.ToList();
 
 
-            var availableFurnitures = _context.Furnitures.Where(x => !currentRentals.Contains(x.Id)).ToList();
+            List<Rental> rentals = new List<Rental>();
+            for (int i = 0; i < customers.Count; i++)
+            {
+                var customerIdLoop = customers[i].Id;
+                Rental rental = new Rental();
+                rental.furnituresFromRental = _context.Rentals.Where(x => x.CustomerId == customerIdLoop).ToList();
+
+                rentals.Add(rental);
+            }
+
+            List<Furniture> furnitures = new List<Furniture>();
+            for (int i = 0; i < rentals.Count; i++)
+            {
+               //var furnitureCount = _context.Furnitures.Where( x => x.)
+                var furnitureIdLoop = rentals[i].FurnitureId;
+                Furniture furniture = new Furniture();
+                furniture = _context.Furnitures.FirstOrDefault(x => x.Id == furnitureIdLoop);
+                furnitures.Add(furniture);
+            }
+
+            //var furnitures = _context.Furnitures.ToList();
+            //var currentRentals = _context.Rentals.Select(x => x.FurnitureId).ToList();
+            
 
 
+            //var availableFurnitures = _context.Furnitures.Where(x => !currentRentals.Contains(x.Id)).ToList();
+
+            
 
             RentalFurnitureViewModel viewModel = new RentalFurnitureViewModel()
             {
+                customers = customers,
                 Rentals = rentals,
-                Furnitures = furnitures,
-                availableFurnitures = availableFurnitures
+                Furnitures = furnitures
             };
 
 
@@ -74,11 +100,13 @@ namespace StorageProject5.Controllers
             
             //var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == id);
             var rent = new Rental();
+            var customer = new Customer();
 
             RentalFurnitureViewModel viewModel = new RentalFurnitureViewModel()
             {
                 Furnitures = furnitures,
-                Rental = rent
+                Rental = rent,
+                Customer = customer
             };
 
             return View(viewModel);
@@ -103,14 +131,16 @@ namespace StorageProject5.Controllers
             //_context.Rentals.Add(rental);
 
             //_context.Rentals.AddRange()
+            _context.customers.Add(multipleRentalPropose.Customer);
+
             List<Rental> rentals = new List<Rental>();
             for (int i = 0; i < multipleRentalPropose.Furnitures.Count; i++)
             {
                 Rental rental = new Rental() {Name = multipleRentalPropose.Rental.Name,  FurnitureId = multipleRentalPropose.Furnitures[i].Id };
                 var tempId = multipleRentalPropose.Furnitures[i].Id;
-                var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == tempId);
+                var furniture = _context.Furnitures.Single(m => m.Id == tempId);
                 furniture.IsRented = multipleRentalPropose.Furnitures[i].IsRented;
-                _context.Furnitures.Add(furniture);
+               // _context.Furnitures.Add(furniture);
                 rentals.Add(rental);
             }
 
@@ -124,7 +154,7 @@ namespace StorageProject5.Controllers
 
                  return RedirectToAction("Index", "Rentals");
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
                 throw;
@@ -144,6 +174,11 @@ namespace StorageProject5.Controllers
             TempData["message"] = "Update Rental Successfully";
             return RedirectToAction("AdminIndex", "rentals");
             
+        }
+
+        public ActionResult DashboadRental()
+        {
+            return View();
         }
     }
 }

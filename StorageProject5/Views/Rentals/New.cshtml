@@ -11,19 +11,19 @@
 <p>Please reserve a furniture through this form</p>
 @using (Html.BeginForm("Create", "Rentals"))
 {
-<div class="form-group">
-    @Html.LabelFor(m => m.Rental.Name)
-    @Html.TextBoxFor(m => m.Rental.Name, new { @class = "form-control" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Rental.Name)
+        @Html.TextBoxFor(m => m.Rental.Name, new { @class = "form-control" })
 
-    @for (int i = 0; i < Model.Furnitures.Count; i++)
-    {
+        @for (int i = 0; i < Model.Furnitures.Count; i++)
+        {
 
-        @Html.HiddenFor(h => h.Furnitures[i].Id);
-        @Html.HiddenFor(m => m.Furnitures[i].IsRented);
-    }
+            @Html.HiddenFor(h => h.Furnitures[i].Id);
+            @Html.HiddenFor(m => m.Furnitures[i].IsRented);
+        }
 
 
-</div>
+    </div>
 
     <ul>
         @foreach (var item in Model.Furnitures)
@@ -32,5 +32,12 @@
         }
 
     </ul>
-    <button type="submit" class="btn btn-danger">Submit</button>
+    <h3>Customer details address Think to redirect payment and then resume and emailing</h3>  
+   <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+    </div>
+
+
+<button type="submit" class="btn btn-danger">Submit</button>
 }

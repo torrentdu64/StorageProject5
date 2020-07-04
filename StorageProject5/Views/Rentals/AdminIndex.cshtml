@@ -6,25 +6,45 @@
 
 <h2>AdminIndex</h2>
 
-@foreach (var item in Model.Rentals)
+@*@foreach (var item in Model.Rentals)
+    {
+        <div class="row">
+            <h1>Manage : @Model </h1>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <h1>@item.Name - <span class="label label-warning">Available</span></h1>
+                <ul>
+                    <li>@item.Furniture.Name</li>
+                </ul>
+            </div>
+            <div class="panel-footer">
+
+                <div>@Html.ActionLink(item.Name, "Edit", "Rentals", new { id = item.Id }, new { @class = "btn btn-success"})</div>
+            </div>
+        </div>
+
+    }*@
+
+<h1>------------------------------------------------------------------------------------</h1>
+
+
+@for (int i = 0; i < Model.Rentals.Count; i++)   
 {
-    <div class="row">
-        <h1>Manage : </h1>
-    </div>
+    <h3>-----------------------------------------------</h3>
+    <h4>@Model.customers[i].Name</h4>
+    <h4>@Model.Rentals[i].Name</h4>
+    foreach (var item in Model.Furnitures)
+    {
+        if (item.Id == Model.Rentals[i].FurnitureId)
+        {
+            <h4>@item.Name</h4>
+        }
+    }
+    <h3>-----------------------------------------------</h3>
 
-    <div class="panel panel-default">
-        <div class="panel-body">
-
-            <h1>@item.Name - <span class="label label-warning">Available</span></h1>
-            <ul>
-                <li>@item.Furniture.Name</li>
-            </ul>
-        </div>
-        <div class="panel-footer">
-
-            <div>@Html.ActionLink(item.Name, "Edit", "Rentals", new { id = item.Id }, new { @class = "btn btn-success"})</div>
-        </div>
-    </div>
 
 }
 

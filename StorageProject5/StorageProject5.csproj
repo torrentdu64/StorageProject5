@@ -224,8 +224,13 @@
     <Compile Include="Migrations\202007040025119_AddBoolCheckboxIsRentedToFurniture.Designer.cs">
       <DependentUpon>202007040025119_AddBoolCheckboxIsRentedToFurniture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007042013120_AddCustomerToRental.cs" />
+    <Compile Include="Migrations\202007042013120_AddCustomerToRental.Designer.cs">
+      <DependentUpon>202007042013120_AddCustomerToRental.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Furniture.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs" />
@@ -356,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007040025119_AddBoolCheckboxIsRentedToFurniture.resx">
       <DependentUpon>202007040025119_AddBoolCheckboxIsRentedToFurniture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007042013120_AddCustomerToRental.resx">
+      <DependentUpon>202007042013120_AddCustomerToRental.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

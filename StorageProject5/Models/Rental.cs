@@ -13,5 +13,11 @@ namespace StorageProject5.Models
 
         public int FurnitureId { get; set; }
         public Furniture Furniture { get; set; }
+
+        public int CustomerId { get; set; }
+
+        public Customer Customer { get; set; }
+
+       // public List<Rental> furnituresFromRental { get; set; }
     }
 }

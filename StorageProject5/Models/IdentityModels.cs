@@ -20,6 +20,7 @@ namespace StorageProject5.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public  DbSet<Customer> customers { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<Furniture> Furnitures { get; set; }
         public DbSet<Part>  Parts { get; set; }

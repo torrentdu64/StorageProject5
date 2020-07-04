@@ -22,41 +22,43 @@ namespace StorageProject5.Controllers
         // GET: Rentals
         public ActionResult Index()
         {
-       
-            var furnitures = _context.Furnitures.ToList();
-
-            var rentals = _context.Rentals.Select(x => x.Id).ToList();
-
-            //var existingIds = db.ExistingBorrower.Select(x => x.ID).ToList();
-
-            //var newBorrowers = db.AllClients.Where(x => !existingIds.Contains(x.ID));
-
-
-            
-            var availableFurnitures = _context.Furnitures.Where(x => !rentals.Contains(x.Id) ).ToList();
-
-            //var availableFurniture = new List<Furniture>();
-            //for (int i = 0; i < furnitures.Count; i++)
-            //{
-            //    if (rentals[i].FurnitureId.Equals(furnitures[i].Id))
-            //    {
-            //        availableFurniture.Add(furnitures[i]);
-            //    }
-            //}
+            var currentRentals = _context.Rentals.Select(x => x.FurnitureId).ToList();
+            var availableFurnitures = _context.Furnitures.Where(x => !currentRentals.Contains(x.Id) ).ToList();
 
             RentalFurnitureViewModel viewModel = new RentalFurnitureViewModel()
             {
+                availableFurnitures = availableFurnitures
+            };
+
+            return View(viewModel);
+        }
+
+        public ActionResult AdminIndex()
+        {
+            var furnitures = _context.Furnitures.ToList();
+            var currentRentals = _context.Rentals.Select(x => x.FurnitureId).ToList();
+            var rentals = _context.Rentals.ToList();
+
+
+            var availableFurnitures = _context.Furnitures.Where(x => !currentRentals.Contains(x.Id)).ToList();
+
+
+
+            RentalFurnitureViewModel viewModel = new RentalFurnitureViewModel()
+            {
+                Rentals = rentals,
                 Furnitures = furnitures,
                 availableFurnitures = availableFurnitures
-
-
             };
 
 
             return View(viewModel);
         }
-        public ActionResult New(int id)
+
+
+        public ActionResult New(int? id)
         {
+            
             var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == id);
             var rent = new Rental();
 
@@ -68,6 +70,13 @@ namespace StorageProject5.Controllers
 
             return View(viewModel);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var rent = _context.Rentals.SingleOrDefault(x => x.Id == id);
+            return View(rent);
+        }
+
         [HttpPost]
         public ActionResult Create(RentalFurnitureViewModel rentalPropose)
         {
@@ -84,6 +93,17 @@ namespace StorageProject5.Controllers
 
             return RedirectToAction("Index", "Rentals");
            
+        }
+
+        public ActionResult Update(Rental rental)
+        {
+
+            var dbRental = _context.Rentals.Single(m => m.Id == rental.Id);
+            dbRental.Name = rental.Name;
+            _context.SaveChanges();
+            TempData["message"] = "Update Rental Successfully";
+            return RedirectToAction("AdminIndex", "rentals");
+            
         }
     }
 }

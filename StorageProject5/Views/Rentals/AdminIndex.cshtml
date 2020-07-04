@@ -1,0 +1,30 @@
+﻿@model StorageProject5.ViewModels.RentalFurnitureViewModel
+@{
+    ViewBag.Title = "AdminIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AdminIndex</h2>
+
+@foreach (var item in Model.Rentals)
+{
+    <div class="row">
+        <h1>Manage : </h1>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <h1>@item.Name - <span class="label label-warning">Available</span></h1>
+            <ul>
+                <li>@item.Furniture.Name</li>
+            </ul>
+        </div>
+        <div class="panel-footer">
+
+            <div>@Html.ActionLink(item.Name, "Edit", "Rentals", new { id = item.Id }, new { @class = "btn btn-success"})</div>
+        </div>
+    </div>
+
+}
+

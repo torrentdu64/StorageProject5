@@ -15,5 +15,9 @@ namespace StorageProject5.ViewModels
         public List<Rental> Rentals { get; set; }
 
         public List<Furniture> availableFurnitures { get; set; }
+
+        
+
+        public List<Furniture> OrdersThisWeek { get; set; } = new List<Furniture>();
     }
 }

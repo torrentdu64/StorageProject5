@@ -10,23 +10,43 @@
 
 
 <div class="container">
-    <div class="row">
-       
 
-        @foreach (var item in Model.availableFurnitures)
+    @using (Html.BeginForm("Create", "Rentals"))
+    {
+        foreach (var item in Model.availableFurnitures)
         {
-            <div class="panel panel-default">
-                <div class="panel-body">
+            <div class="row">
 
-                    <h1>@item.Name - <span class="label label-warning">Available</span></h1>
-                    <h3></h3>
-                </div>
-                <div class="panel-footer">
+                <div class="panel panel-default">
+                    <div class="panel-body">
 
-                    <div>@Html.ActionLink("Rented", "New", "Rentals", new { id = item.Id }, new { @class = "btn btn-primary" })</div>
+                        <h1>@item.Name - <span class="label label-warning">Available</span></h1>
+                        <h3></h3>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check for rent</label>
+                            <input asp-for="OrdersThisWeek[i].Dispatched" />
+                            @Html.CheckBoxFor(m => m.IsChecked)
+                        </div>
+
+
+                    </div>
                 </div>
+
             </div>
 
+
         }
-    </div>
+        <div class="row">
+            <button type="submit" class="btn btn-danger">Save</button>
+        </div>
+    }
+
+
+
+
+
+
 </div>

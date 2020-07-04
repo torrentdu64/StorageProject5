@@ -6,17 +6,31 @@
 
 <h2>Rente a furniture</h2>
 
-<h3>You have choose @Model.Furniture.Name</h3>
+<h3>You have choose </h3>
 
 <p>Please reserve a furniture through this form</p>
 @using (Html.BeginForm("Create", "Rentals"))
 {
-    <div class="form-group">
-        @Html.LabelFor( m => m.Rental.Name)
-        @Html.TextBoxFor( m => m.Rental.Name , new { @class = "form-control"})
+<div class="form-group">
+    @Html.LabelFor(m => m.Rental.Name)
+    @Html.TextBoxFor(m => m.Rental.Name, new { @class = "form-control" })
 
-       
-        @Html.HiddenFor( h => h.Furniture.Id)
-    </div>
+    @for (int i = 0; i < Model.Furnitures.Count; i++)
+    {
+
+        @Html.HiddenFor(h => h.Furnitures[i].Id);
+        @Html.HiddenFor(m => m.Furnitures[i].IsRented);
+    }
+
+
+</div>
+
+    <ul>
+        @foreach (var item in Model.Furnitures)
+        {
+            <li>@item.Name - @item.Id - </li>
+        }
+
+    </ul>
     <button type="submit" class="btn btn-danger">Submit</button>
 }

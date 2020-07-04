@@ -56,15 +56,28 @@ namespace StorageProject5.Controllers
         }
 
 
-        public ActionResult New(int? id)
+        public ActionResult New(RentalFurnitureViewModel multipleRentalPropose)
         {
+            List<Furniture> furnitures = new List<Furniture>();
+            foreach (var item in multipleRentalPropose.availableFurnitures)
+            {
+                if (item.IsRented)
+                {
+                    Furniture furniture = new Furniture();
+                    furniture.Id = item.Id;
+                    furniture.Name = item.Name;
+                    furniture.IsRented = item.IsRented;
+                    furnitures.Add(furniture);
+                }
+            }
             
-            var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == id);
+            
+            //var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == id);
             var rent = new Rental();
 
             RentalFurnitureViewModel viewModel = new RentalFurnitureViewModel()
             {
-                Furniture = furniture,
+                Furnitures = furnitures,
                 Rental = rent
             };
 
@@ -78,15 +91,19 @@ namespace StorageProject5.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(RentalFurnitureViewModel rentalPropose)
+        public ActionResult Create(RentalFurnitureViewModel multipleRentalPropose)
         {
-            Rental rental = new Rental()
-            {
-                Name = rentalPropose.Rental.Name,
-                FurnitureId = rentalPropose.Furniture.Id
-            };
-            _context.Rentals.Add(rental);
-            
+
+
+            //Rental rental = new Rental()
+            //{
+            //    Name = multipleRentalPropose.Rental.Name,
+            //    FurnitureId = multipleRentalPropose.Furniture.Id
+            //};
+            //_context.Rentals.Add(rental);
+
+            //_context.Rentals.AddRange()
+
             _context.SaveChanges();
 
             TempData["message"] = "Your Rental Successfully record";

@@ -123,10 +123,12 @@ namespace StorageProject5.Controllers
                 foreach (var item in customerHave)
                 {
                     tempId2 = item.CustomerId;
+                    
                 }
                 //var tempId = customerHave[i].CustomerId;
                 var dbCustomer = _context.customers.Single(c => c.Id == tempId2);
-                aRental.cusrtomerName = dbCustomer.Name;
+                aRental.customerName = dbCustomer.Name;
+                aRental.customerId = dbCustomer.Id;
                 aRental.rentalName = customerHave[0].Name;
                 customer = new Customer() { Id = dbCustomer.Id, Name = dbCustomer.Name };
 
@@ -188,16 +190,20 @@ namespace StorageProject5.Controllers
                     furnitures.Add(furniture);
                 }
             }
-            
-            
+
+
             //var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == id);
-            var rent = new Rental();
+            Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+
+            var rental = new Rental() {
+                Name = unixTimestamp
+            };
             var customer = new Customer();
 
             RentalFurnitureViewModel viewModel = new RentalFurnitureViewModel()
             {
                 Furnitures = furnitures,
-                Rental = rent,
+                Rental = rental,
                 Customer = customer
             };
 
@@ -213,16 +219,6 @@ namespace StorageProject5.Controllers
         [HttpPost]
         public ActionResult Create(RentalFurnitureViewModel multipleRentalPropose)
         {
-
-
-            //Rental rental = new Rental()
-            //{
-            //    Name = multipleRentalPropose.Rental.Name,
-            //    FurnitureId = multipleRentalPropose.Furniture.Id
-            //};
-            //_context.Rentals.Add(rental);
-
-            //_context.Rentals.AddRange()
             _context.customers.Add(multipleRentalPropose.Customer);
 
             List<Rental> rentals = new List<Rental>();
@@ -232,7 +228,7 @@ namespace StorageProject5.Controllers
                 var tempId = multipleRentalPropose.Furnitures[i].Id;
                 var furniture = _context.Furnitures.Single(m => m.Id == tempId);
                 furniture.IsRented = multipleRentalPropose.Furnitures[i].IsRented;
-               // _context.Furnitures.Add(furniture);
+               
                 rentals.Add(rental);
             }
 

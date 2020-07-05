@@ -4,13 +4,14 @@
 
 <div class="jumbotron">
     <h1>Store Manager</h1>
-    <h2>@Html.ActionLink("Deposit a object", "New" , "Furnitures", null, new { @class = "btn btn-primary btn-lg" } )</h2>
+    <h2>@Html.ActionLink("Deposit a object", "New", "Furnitures", null, new { @class = "btn btn-primary btn-lg" })</h2>
 
     <h1>Rental a furniture</h1>
-    <h2>@Html.ActionLink("rent a product" , "Index" , "Rentals", null, new { @class = "btn btn-success btn-lg" })</h2>
+    <h2>@Html.ActionLink("rent a product", "Index", "Rentals", null, new { @class = "btn btn-success btn-lg" })</h2>
 
     <h1>Link for Admin</h1>
     <h2>@Html.ActionLink("Dashboard", "AdminListFurniture", "Furnitures", null, new { @class = "btn btn-danger btn-lg" })</h2>
+    <h2>@Html.ActionLink("Dashboard", "AdminIndex", "Rentals", null, new { @class = "btn btn-danger btn-lg" })</h2>
 
 
 </div>

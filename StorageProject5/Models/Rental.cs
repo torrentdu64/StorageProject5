@@ -9,7 +9,7 @@ namespace StorageProject5.Models
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public int Name { get; set; }
 
         public int FurnitureId { get; set; }
         public Furniture Furniture { get; set; }

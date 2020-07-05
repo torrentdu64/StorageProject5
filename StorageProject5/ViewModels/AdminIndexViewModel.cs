@@ -8,9 +8,11 @@ namespace StorageProject5.ViewModels
 {
     public class AdminIndexViewModel
     {
-        public int id { get; set; }
-        public string cusrtomerName { get; set; }
-        public string rentalName { get; set; }
+        public int rentalId { get; set; }
+        public List<Rental> Rentals = new List<Rental>();
+        public int customerId { get; set; }
+        public string customerName { get; set; }
+        public int rentalName { get; set; }
         public List<Furniture> Furnitures = new List<Furniture>();
     }
 }

@@ -6,70 +6,31 @@
 
 <h2>AdminIndex</h2>
 
-@foreach (var item in Model.rentals)
-{
-    <h1>@item.cusrtomerName</h1>
-    <h1>@item.rentalName</h1>
-    <ul>
-        @foreach (var furniture in item.Furnitures)
-        {
-            <li>@furniture.Name</li>
-        }
-
-    </ul>
-   
-}
-
-@*@foreach (var item in Model.Rentals)
-    {
-        <div class="row">
-            <h1>Manage : @Model </h1>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-body">
-
-                <h1>@item.Name - <span class="label label-warning">Available</span></h1>
-                <ul>
-                    <li>@item.Furniture.Name</li>
-                </ul>
-            </div>
-            <div class="panel-footer">
-
-                <div>@Html.ActionLink(item.Name, "Edit", "Rentals", new { id = item.Id }, new { @class = "btn btn-success"})</div>
-            </div>
-        </div>
-
-    }*@
 
 <h1>------------------------------------------------------------------------------------</h1>
 
-@*@for (int i = 0; i < Model.Rentals.Count; i++)
+<div class="container">
+    @foreach (var item in Model.rentals)
     {
-        <h1></h1>
-        <h1>@Model.Furnitures[i].Name</h1>
-        <h1>------------------------------------------------------------------------------------</h1>
+    <div class="row">
 
-    }*@
-
-
-
-<h1>------------------------------------------------------------------------------------</h1>
-
-@*@for (int i = 0; i < Model.Rentals.Count; i++)
-    {
-        <h3>-----------------------------------------------</h3>
-        <h4>@Model.customers[i].Name</h4>
-        <h4>@Model.Rentals[i].Name</h4>
-        foreach (var item in Model.Furnitures)
-        {
-            if (item.Id == Model.Rentals[i].FurnitureId)
+        <div class="jumbotron">
+            <h1>Customer Name: @Html.ActionLink(@item.customerName, "Edit", "Customers", new { id = item.customerId }, null )</h1>
+            <h2>Shipping Numbers  @item.rentalName</h2>
+            <h3> Want to rent : </h3>
+            @foreach (var furniture in item.Furnitures)
             {
-                <h4>@item.Name</h4>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button"> @furniture.Name Detail</a></p>
+            
             }
-        }
-        <h3>-----------------------------------------------</h3>
 
+        </div>
+      
 
-    }*@
+       
+    </div>
 
+    }
+</div>
+
+<h1>------------------------------------------------------------------------------------</h1>

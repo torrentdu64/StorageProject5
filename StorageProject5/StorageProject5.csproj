@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\FurnituresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -247,6 +248,10 @@
     <Compile Include="Migrations\202007050225176_ChangeCollectionToRentals.cs" />
     <Compile Include="Migrations\202007050225176_ChangeCollectionToRentals.Designer.cs">
       <DependentUpon>202007050225176_ChangeCollectionToRentals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007051121478_ChangeIntNameToRentals.cs" />
+    <Compile Include="Migrations\202007051121478_ChangeIntNameToRentals.Designer.cs">
+      <DependentUpon>202007051121478_ChangeIntNameToRentals.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -330,6 +335,7 @@
     <Content Include="Views\Rentals\New.cshtml" />
     <Content Include="Views\Rentals\AdminIndex.cshtml" />
     <Content Include="Views\Rentals\Edit.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -401,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007050225176_ChangeCollectionToRentals.resx">
       <DependentUpon>202007050225176_ChangeCollectionToRentals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007051121478_ChangeIntNameToRentals.resx">
+      <DependentUpon>202007051121478_ChangeIntNameToRentals.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

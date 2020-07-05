@@ -21,5 +21,6 @@ namespace StorageProject5.ViewModels
         public Customer Customer { get; set; }
 
         public List<Customer> customers { get; set; }
+        
     }
 }

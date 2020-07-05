@@ -18,6 +18,7 @@ namespace StorageProject5.Models
 
         public Customer Customer { get; set; }
 
-       // public List<Rental> furnituresFromRental { get; set; }
+        public virtual ICollection<Furniture> Furnitures { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

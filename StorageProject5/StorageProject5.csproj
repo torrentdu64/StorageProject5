@@ -228,6 +228,26 @@
     <Compile Include="Migrations\202007042013120_AddCustomerToRental.Designer.cs">
       <DependentUpon>202007042013120_AddCustomerToRental.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007050000305_AddListToRentals.cs" />
+    <Compile Include="Migrations\202007050000305_AddListToRentals.Designer.cs">
+      <DependentUpon>202007050000305_AddListToRentals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007050012152_ChangeTypeRentalToIntInRentals.cs" />
+    <Compile Include="Migrations\202007050012152_ChangeTypeRentalToIntInRentals.Designer.cs">
+      <DependentUpon>202007050012152_ChangeTypeRentalToIntInRentals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007050026319_ChangeTypeIntToRentalInRentals.cs" />
+    <Compile Include="Migrations\202007050026319_ChangeTypeIntToRentalInRentals.Designer.cs">
+      <DependentUpon>202007050026319_ChangeTypeIntToRentalInRentals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007050143449_IListToRentals.cs" />
+    <Compile Include="Migrations\202007050143449_IListToRentals.Designer.cs">
+      <DependentUpon>202007050143449_IListToRentals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007050225176_ChangeCollectionToRentals.cs" />
+    <Compile Include="Migrations\202007050225176_ChangeCollectionToRentals.Designer.cs">
+      <DependentUpon>202007050225176_ChangeCollectionToRentals.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -239,7 +259,9 @@
     <Compile Include="Models\Rental.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AdminIndexViewModel.cs" />
     <Compile Include="ViewModels\FourniturePartViewModel.cs" />
+    <Compile Include="ViewModels\ListOfAminIndex.cs" />
     <Compile Include="ViewModels\RentalFurnitureViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -364,6 +386,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007042013120_AddCustomerToRental.resx">
       <DependentUpon>202007042013120_AddCustomerToRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007050000305_AddListToRentals.resx">
+      <DependentUpon>202007050000305_AddListToRentals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007050012152_ChangeTypeRentalToIntInRentals.resx">
+      <DependentUpon>202007050012152_ChangeTypeRentalToIntInRentals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007050026319_ChangeTypeIntToRentalInRentals.resx">
+      <DependentUpon>202007050026319_ChangeTypeIntToRentalInRentals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007050143449_IListToRentals.resx">
+      <DependentUpon>202007050143449_IListToRentals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007050225176_ChangeCollectionToRentals.resx">
+      <DependentUpon>202007050225176_ChangeCollectionToRentals.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

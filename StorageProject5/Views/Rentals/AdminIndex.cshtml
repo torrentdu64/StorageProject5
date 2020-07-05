@@ -1,10 +1,24 @@
-﻿@model StorageProject5.ViewModels.RentalFurnitureViewModel
+﻿@model  StorageProject5.ViewModels.ListOfAminIndex
 @{
     ViewBag.Title = "AdminIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>AdminIndex</h2>
+
+@foreach (var item in Model.rentals)
+{
+    <h1>@item.cusrtomerName</h1>
+    <h1>@item.rentalName</h1>
+    <ul>
+        @foreach (var furniture in item.Furnitures)
+        {
+            <li>@furniture.Name</li>
+        }
+
+    </ul>
+   
+}
 
 @*@foreach (var item in Model.Rentals)
     {
@@ -30,21 +44,32 @@
 
 <h1>------------------------------------------------------------------------------------</h1>
 
-
-@for (int i = 0; i < Model.Rentals.Count; i++)   
-{
-    <h3>-----------------------------------------------</h3>
-    <h4>@Model.customers[i].Name</h4>
-    <h4>@Model.Rentals[i].Name</h4>
-    foreach (var item in Model.Furnitures)
+@*@for (int i = 0; i < Model.Rentals.Count; i++)
     {
-        if (item.Id == Model.Rentals[i].FurnitureId)
+        <h1></h1>
+        <h1>@Model.Furnitures[i].Name</h1>
+        <h1>------------------------------------------------------------------------------------</h1>
+
+    }*@
+
+
+
+<h1>------------------------------------------------------------------------------------</h1>
+
+@*@for (int i = 0; i < Model.Rentals.Count; i++)
+    {
+        <h3>-----------------------------------------------</h3>
+        <h4>@Model.customers[i].Name</h4>
+        <h4>@Model.Rentals[i].Name</h4>
+        foreach (var item in Model.Furnitures)
         {
-            <h4>@item.Name</h4>
+            if (item.Id == Model.Rentals[i].FurnitureId)
+            {
+                <h4>@item.Name</h4>
+            }
         }
-    }
-    <h3>-----------------------------------------------</h3>
+        <h3>-----------------------------------------------</h3>
 
 
-}
+    }*@
 

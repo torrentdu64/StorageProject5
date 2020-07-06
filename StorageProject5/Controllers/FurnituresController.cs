@@ -112,5 +112,14 @@ namespace StorageProject5.Controllers
             TempData["message"] = "Update Successfully";
             return RedirectToAction("AdminListFurniture", "Furnitures");
         }
+
+        
+        public ActionResult GiveBack(RenderFurnitureViewModel code)
+        {
+            var rental = _context.Rentals.Where(x => x.Name == code.CodeName).Select(x => x.FurnitureId).ToList();
+            var furnitures = _context.Furnitures.Where(x => rental.Contains(x.Id) ).ToList();
+            
+            return View(furnitures);
+        }
     }
 }

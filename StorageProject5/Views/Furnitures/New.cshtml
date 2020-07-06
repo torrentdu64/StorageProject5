@@ -1,4 +1,4 @@
-﻿@model StorageProject5.Models.Furniture
+﻿@model StorageProject5.ViewModels.RenderFurnitureViewModel
 
 @{
     ViewBag.Title = "New";
@@ -16,9 +16,20 @@
 @using (Html.BeginForm("Create", "Furnitures"))
 {
     <div class="form-group">
-    
+
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
     </div>
     <button type="submit" class="btn btn-danger">Submit</button>
+}
+
+    <h2>Use You Code</h2>
+@using (Html.BeginForm("GiveBack", "Furnitures"))
+{
+    <div class="form-group">
+        @Html.LabelFor( x => x.CodeName)
+       
+        @Html.TextBoxFor(m => m.CodeName, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-danger">Search</button>
 }

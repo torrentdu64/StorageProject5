@@ -267,6 +267,7 @@
     <Compile Include="ViewModels\AdminIndexViewModel.cs" />
     <Compile Include="ViewModels\FourniturePartViewModel.cs" />
     <Compile Include="ViewModels\ListOfAminIndex.cs" />
+    <Compile Include="ViewModels\RenderFurnitureViewModel.cs" />
     <Compile Include="ViewModels\RentalFurnitureViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -336,6 +337,7 @@
     <Content Include="Views\Rentals\AdminIndex.cshtml" />
     <Content Include="Views\Rentals\Edit.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Furnitures\GiveBack.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

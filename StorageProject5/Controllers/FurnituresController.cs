@@ -31,15 +31,7 @@ namespace StorageProject5.Controllers
         public ActionResult AdminListFurniture()
         {
             var furnitures = _context.Furnitures.ToList();
-
-          
-
             var partsLocations = _context.Parts.Include(m => m.Location).ToList();
-
-
-
-
-
             var viewModel = new FourniturePartViewModel
             {
                 Furnitures = furnitures,
@@ -94,8 +86,6 @@ namespace StorageProject5.Controllers
 
         public ActionResult Edit(int id)
         {
-
-
             var furniture = _context.Furnitures.SingleOrDefault(m => m.Id == id);
             if (furniture == null)
                 return HttpNotFound();
@@ -120,6 +110,40 @@ namespace StorageProject5.Controllers
             var furnitures = _context.Furnitures.Where(x => rental.Contains(x.Id) ).ToList();
             
             return View(furnitures);
+        }
+
+   
+        public ActionResult Back(Furniture furniture)
+        {
+
+            //var test = Request.Params("item.IsRented[]");
+
+            //var partName = Request.Params["FurnitureBack"];
+
+            //var partName3 = Request.Params["item.id"];
+            //var partName233 = Request.Form["item.IsRented"];
+
+            //var partName5 = Request.Params["item.Name"];
+            //var partName78 = Request.Params["name"];
+            //var partName2 = Request.Form["value"];
+
+            var furnitureBack = Request.Params["item.id"].Split(',').ToList();
+
+
+            List<Furniture> furnitureGiveBack = new List<Furniture>();
+            for (int i = 0; i < furnitureBack.Count; i++)
+            {
+                // check if bool of id came from if giveback
+                var furnitureIdBack = int.Parse(furnitureBack[i]);
+                var dbFurniture = _context.Furnitures.Single(m => m.Id == furnitureIdBack);
+                //furnitureGiveBack.Add(d);
+                dbFurniture.IsRented = false;
+            }
+
+            _context.SaveChanges();
+
+
+            return RedirectToAction( "Index" , "Home" );
         }
     }
 }

@@ -29,9 +29,9 @@ namespace StorageProject5.Controllers
         public ActionResult Index()
         {
             var currentRentals = _context.Rentals.Select(x => x.FurnitureId).ToList();
-            var availableFurnitures = _context.Furnitures.Where(x => !currentRentals.Contains(x.Id) ).ToList();
+            //var availableFurnitures = _context.Furnitures.Where(x => !currentRentals.Contains(x.Id) ).ToList();
 
-           
+            var availableFurnitures = _context.Furnitures.Where(x => x.IsRented == false ).ToList();
 
             RentalFurnitureViewModel viewModel = new RentalFurnitureViewModel()
             {

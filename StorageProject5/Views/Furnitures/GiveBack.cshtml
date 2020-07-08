@@ -1,4 +1,4 @@
-﻿
+﻿@model  IEnumerable<StorageProject5.Models.Furniture>
 @{
     ViewBag.Title = "GiveBack";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +6,34 @@
 
 <h2>GiveBack</h2>
 
+<ul>
+    @using (Html.BeginForm("Back", "Furnitures"))
+    {
+        foreach (var item in Model)
+        {
+
+
+
+            <li>
+
+                <div class="form-check">
+                    <h2>@item.Name</h2> -
+
+                    @*<input  id="item_IsRented" name="id[@item.Id]" type="checkbox" value="v[@item.IsRented]">*@
+                    @Html.CheckBox( item.Id.ToString() )
+
+                </div>
+                @Html.HiddenFor(m => item.Id)
+                @*@Html.HiddenFor(m => item.Name)
+                @Html.HiddenFor(m => item.Name)*@
+
+            </li>
+
+        }
+        <button type="submit" class="btn btn-danger">Save</button>
+    }
+</ul>
+
+@* @Html.CheckBox("FurnitureBack", item.IsRented, new { @value = item.IsRented, @id = item.Id }) --*@
+@*<input type="checkbox" name="selectedObjects[]" value="@item.IsRented">*@
+@*<input class='form-control' type="checkbox" id='Furniture_IsRented' name='Furniture.IsRented[]' type='text' value='@item.IsRented'>*@
